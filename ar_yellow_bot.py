@@ -5,7 +5,7 @@ import subprocess
 import sys
 
 bot = telebot.TeleBot('1625952028:AAGHJaISo5qq3oOEyR3NXOz3XZt5yakIuDE')
-status = "Похуй"
+status = "Покой"
 path = '/home/lagushka/AR_BOT/files'
 ffs = []
 
@@ -14,7 +14,11 @@ class Program():
         try:
             self.ff = subprocess.check_output(['python', path + '/'  + file])
         except subprocess.CalledProcessError as e:
-            bot.send_message(call.message.chat.id, "Ошибка: \n" + str(e.output))
+            try:
+                bot.send_message(call.message.chat.id, "Ошибка: \n" + str(e.output))
+            except:
+                pass
+            
     def close(self):
         global status
         status = 'Покой'
@@ -23,6 +27,10 @@ class Program():
         except:
         	pass
 
+with open('auto.txt', 'r') as f:
+        if f.read(0) != "null":
+                ffs.append(Program(f.read(0), False))
+        
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
     keyboard = telebot.types.ReplyKeyboardMarkup(True)
@@ -41,7 +49,7 @@ def send_list(message):
     #markup.add(telebot.types.InlineKeyboardButton(text='Изменение параметров', callback_data="n3"))
     markup.add(telebot.types.InlineKeyboardButton(text='Получить файл', callback_data="n4"))
     st = ""
-    for root, dirs, files in os.walk(path):  
+    for root, dirs, files in os.walk(path + '/'):  
         for filename in files:
             st += filename + '\n'
     try:
