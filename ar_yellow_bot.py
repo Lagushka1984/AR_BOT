@@ -28,9 +28,17 @@ class Program():
         	pass
 
 with open('auto.txt', 'r') as f:
-        if f.read(0) != "null":
-                ffs.append(Program(f.read(0), False))
+    if f.read(0) != "null":
+        ffs.append(Program(f.read(0), False))
         
+@bot.message_handler(commands=['photo'])
+def send_photo(message):
+    try:
+        img = open(path + '/buffer/' + 'picture.jpg', 'rb')
+        tb.send_photo(message.chat.id, img)
+        img.close()
+        
+    
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
     keyboard = telebot.types.ReplyKeyboardMarkup(True)
