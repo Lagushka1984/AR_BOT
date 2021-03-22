@@ -9,8 +9,8 @@ from PIL import Image
 
 bot = telebot.TeleBot('1625952028:AAGHJaISo5qq3oOEyR3NXOz3XZt5yakIuDE')
 status = "Покой"
-path = 'C:/Users/turki/Desktop/ROBOCUP/PYTHON/files'
-null_path = 'C:/Users/turki/Desktop/ROBOCUP/PYTHON'
+path = 'AR_BOT/files'
+null_path = 'AR_BOT'
 ffs = []
 check = False
 robot = Robot()
