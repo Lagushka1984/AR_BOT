@@ -7,7 +7,7 @@ import time
 from robot import Robot
 from PIL import Image
 
-bot = telebot.TeleBot('1625952028:AAGHJaISo5qq3oOEyR3NXOz3XZt5yakIuDE')
+bot = telebot.TeleBot('')
 status = "Покой"
 path = 'AR_BOT/files'
 null_path = 'AR_BOT'
