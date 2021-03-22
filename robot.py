@@ -4,7 +4,7 @@ import numpy as np
 from mpu6050 import mpu6050
 
 mpu = mpu6050(0x68)
-path = 'C:/Users/turki/Desktop/ROBOCUP/PYTHON/buffer'
+path = 'AR_BOT/buffer'
 
 class Robot():
     def __init__(self):
